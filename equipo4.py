@@ -77,7 +77,7 @@ COLORES_GRADOS=["#E85D5D","#2EB5A6","#1E9BC1","#E8A87C","#7EC8BB","#F2C94C"]
 FUENTE_TITULO=("Arial",18,"bold"); FUENTE_SUB=("Arial",14,"bold"); FUENTE_NORMAL=("Arial",13,"bold")
 FUENTE_LABEL=("Arial",13,"bold"); FUENTE_BOTON=("Arial",13,"bold"); FUENTE_CHICA=("Arial",12,"bold")
 
-root=tk.Tk(); root.title("ESCUELA PRIMARIA - XAMPP proyecto1"); root.configure(bg=FONDO)
+root=tk.Tk(); root.title("ESCUELA PRIMARIA NEZAHUALCOYOTL"); root.configure(bg=FONDO)
 try: root.state('zoomed')
 except: root.attributes('-zoomed', True)
 root.geometry("1200x700")
@@ -88,7 +88,7 @@ docente_grado_map=get_docentes(); lista_docentes_global=list(docente_grado_map.k
 login_frame=tk.Frame(main, bg=FONDO); director_frame=tk.Frame(main, bg=BLANCO); docente_frame=tk.Frame(main, bg=BLANCO)
 login_frame.pack(fill="both", expand=True)
 header_login=tk.Frame(login_frame, bg=ROSA, height=50); header_login.pack(fill="x")
-tk.Label(header_login, text="ð« ESCUELA PRIMARIA - SISTEMA 2026 ð  |  XAMPP - BD: proyecto1", bg=ROSA, fg=BLANCO, font=("Arial",14,"bold")).pack(side="left", padx=20, pady=12)
+tk.Label(header_login, text="ð« ESCUELA PRIMARIA - SISTEMA 2026 ð ", bg=ROSA, fg=BLANCO, font=("Arial",14,"bold")).pack(side="left", padx=20, pady=12)
 caja=tk.Frame(login_frame, bg=BLANCO, padx=32, pady=28, highlightbackground=BORDE_ROSA, highlightthickness=2); caja.place(relx=0.5, rely=0.5, anchor="center", width=500)
 usuario_var=tk.StringVar(value="ð Selecciona usuario"); usuario_real=tk.StringVar(value=""); nombre_seleccionado=tk.StringVar(value="")
 tk.Label(caja, text="ð¤ Usuario:", bg=BLANCO, anchor="w", font=FUENTE_LABEL, fg=AZUL).pack(fill="x")
@@ -135,7 +135,7 @@ def dialogo_acoplado(titulo, mensaje):
 def crear_vista_pendientes(parent):
     for w in parent.winfo_children(): w.destroy()
     parent.configure(bg=FONDO)
-    tk.Label(parent, text="ð Pendientes - DirecciÃ³n Primaria (XAMPP)", bg=FONDO, font=FUENTE_TITULO, fg=AZUL).pack(anchor="w", padx=25, pady=(15,8))
+    tk.Label(parent, text="ð Pendientes - DirecciÃ³n Primaria", bg=FONDO, font=FUENTE_TITULO, fg=AZUL).pack(anchor="w", padx=25, pady=(15,8))
     banner=tk.Frame(parent, bg=ROSA_CLARO, highlightbackground=BORDE_ROSA, highlightthickness=1, padx=12, pady=12); banner.pack(fill="x", padx=25, pady=8)
     c=tk.Canvas(banner, width=50, height=50, bg=ROSA_CLARO, highlightthickness=0); c.pack(side="left")
     c.create_polygon(25,3, 47,25, 25,47, 3,25, fill=ROSA, outline=ROSA); c.create_text(25,25, text="â¦", fill=BLANCO, font=("Arial",14,"bold"))
@@ -213,14 +213,14 @@ def crear_tabla_asistencia_con_colores(parent, grado_actual="Tercero", es_docent
             if cont["retardos"]>0: cont["retardos"]-=1
         set_estado(nom_alumno, grado_actual, nuevo); set_contador(grado_actual, nom_alumno, cont["retardos"], cont["faltas"]); refrescar()
     tk.Button(btns_arriba, text="ð¦ Cambiar: â â â â â°", bg="#1E293B", fg=BLANCO, bd=0, font=("Arial",13,"bold"), pady=10, padx=16, command=cambiar).pack(side="left", padx=3)
-    tk.Button(btns_arriba, text="ð¾ Guardar en XAMPP", bg=VERDE, fg=BLANCO, bd=0, font=FUENTE_BOTON, pady=10, padx=14, command=lambda: dialogo_acoplado("â Guardado en XAMPP", f"Lista {grado_actual}Â° guardada")).pack(side="left", padx=4)
+    tk.Button(btns_arriba, text="ð¾ Guardar ", bg=VERDE, fg=BLANCO, bd=0, font=FUENTE_BOTON, pady=10, padx=14, command=lambda: dialogo_acoplado("â Guardado en XAMPP", f"Lista {grado_actual}Â° guardada")).pack(side="left", padx=4)
     tk.Button(btns_arriba, text="â©ï¸ Volver", bg=ROSA, fg=BLANCO, bd=0, font=FUENTE_BOTON, pady=10, padx=14, command=lambda: parent.cambiar_a_grados()).pack(side="left", padx=4)
     tabla.bind("<Double-1>", cambiar)
 
 def crear_vista_conducta_docente(parent, nombre_docente_actual):
     for w in parent.winfo_children(): w.destroy()
     grado_doc=docente_grado_map.get(nombre_docente_actual, "General")
-    tk.Label(parent, text=f"â ï¸ Reporte Conducta - {grado_doc} Primaria (XAMPP)", bg=FONDO, font=FUENTE_TITULO, fg=AZUL).pack(anchor="w", padx=25, pady=(15,5))
+    tk.Label(parent, text=f"â ï¸ Reporte Conducta - {grado_doc} Primaria", bg=FONDO, font=FUENTE_TITULO, fg=AZUL).pack(anchor="w", padx=25, pady=(15,5))
     form=tk.Frame(parent, bg=BLANCO, padx=15, pady=15, highlightbackground=BORDE_ROSA, highlightthickness=1); form.pack(fill="x", padx=25, pady=10)
     tk.Label(form, text="ð¦ Alumno:", bg=BLANCO, font=FUENTE_LABEL).grid(row=0, column=0, sticky="w")
     e_alumno=tk.Entry(form, font=FUENTE_NORMAL, bd=1, relief="solid", width=25); e_alumno.grid(row=0, column=1, padx=10, pady=5, ipady=5)
@@ -229,12 +229,12 @@ def crear_vista_conducta_docente(parent, nombre_docente_actual):
     def registrar():
         if not e_alumno.get() or not e_incid.get(): messagebox.showwarning("Aviso","Llena todo"); return
         add_incidencia(e_alumno.get(), grado_doc, e_incid.get(), str(date.today()), nombre_docente_actual)
-        dialogo_acoplado("â Registrado en XAMPP", f"Reporte {grado_doc} guardado"); e_alumno.delete(0, tk.END); e_incid.delete(0, tk.END)
-    tk.Button(form, text=f"â Registrar en {grado_doc} (XAMPP)", bg=ROSA, fg=BLANCO, bd=0, font=FUENTE_BOTON, pady=10, padx=15, command=registrar).grid(row=2, column=0, columnspan=2, pady=15, sticky="ew")
+        dialogo_acoplado("â Registrado ", f"Reporte {grado_doc} guardado"); e_alumno.delete(0, tk.END); e_incid.delete(0, tk.END)
+    tk.Button(form, text=f"â Registrar en {grado_doc}", bg=ROSA, fg=BLANCO, bd=0, font=FUENTE_BOTON, pady=10, padx=15, command=registrar).grid(row=2, column=0, columnspan=2, pady=15, sticky="ew")
 
 def crear_vista_mis_reportes_docente(parent, nombre_docente_actual, es_director=False):
-    for w in parent.winfo_children(): w.destroy()
-    titulo="ð Reportes - Toda la Primaria (XAMPP)" if es_director else f"ð Mis Reportes - {docente_grado_map.get(nombre_docente_actual)} (XAMPP)"
+    for w in parent.winfo_children(): w.destroy()		
+    titulo="ð Reportes - Toda la Primaria" if es_director else f"ð Mis Reportes - {docente_grado_map.get(nombre_docente_actual)} (XAMPP)"
     tk.Label(parent, text=titulo, bg=FONDO, font=FUENTE_TITULO, fg=AZUL).pack(anchor="w", padx=25, pady=(15,5))
     tabla_frame=tk.Frame(parent, bg=BLANCO, highlightbackground="#E2E8F0", highlightthickness=1); tabla_frame.pack(fill="both", expand=True, padx=25, pady=10)
     cols=("Alumno","Grado","Motivo","Fecha","Docente"); tabla=ttk.Treeview(tabla_frame, columns=cols, show="headings", height=12)
@@ -245,12 +245,12 @@ def crear_vista_mis_reportes_docente(parent, nombre_docente_actual, es_director=
             if es_director or docente==nombre_docente_actual: tabla.insert("", "end", values=(alum, grupo, inc, fecha, docente))
     refrescar_tabla()
     btns=tk.Frame(parent, bg=FONDO, height=60); btns.pack(side="bottom", fill="x", padx=25, pady=10)
-    tk.Button(btns, text="ð Actualizar desde XAMPP", bg=AZUL, fg=BLANCO, bd=0, font=FUENTE_BOTON, pady=9, padx=12, command=refrescar_tabla).pack(side="left", padx=4)
+    tk.Button(btns, text="ð Actualizar", bg=AZUL, fg=BLANCO, bd=0, font=FUENTE_BOTON, pady=9, padx=12, command=refrescar_tabla).pack(side="left", padx=4)
 
 def crear_vista_buscar_alumnos(parent, grado_filtro=None):
     for w in parent.winfo_children(): w.destroy()
     texto_grado=f" - {grado_filtro}Â° Primaria" if grado_filtro else " - Toda la Primaria"
-    tk.Label(parent, text=f"ð Buscar Alumnos{texto_grado} (XAMPP)", bg=FONDO, font=FUENTE_TITULO, fg=AZUL).pack(anchor="w", padx=25, pady=(15,5))
+    tk.Label(parent, text=f"ð Buscar Alumnos{texto_grado} ", bg=FONDO, font=FUENTE_TITULO, fg=AZUL).pack(anchor="w", padx=25, pady=(15,5))
     buscador_frame=tk.Frame(parent, bg=BLANCO, highlightbackground=BORDE_ROSA, highlightthickness=2); buscador_frame.pack(fill="x", padx=25, pady=8, ipady=6)
     tk.Label(buscador_frame, text="ð", bg=BLANCO, font=("Arial",16)).pack(side="left", padx=10)
     entry_buscar=tk.Entry(buscador_frame, bd=0, font=FUENTE_NORMAL, fg=AZUL); entry_buscar.pack(side="left", fill="x", expand=True, padx=5)
@@ -269,7 +269,7 @@ def crear_vista_buscar_alumnos(parent, grado_filtro=None):
 
 def crear_vista_gestion_docentes(parent):
     for w in parent.winfo_children(): w.destroy()
-    tk.Label(parent, text="ð©âð« Plantilla Docente - Primaria (XAMPP)", bg=FONDO, font=FUENTE_TITULO, fg=AZUL).pack(anchor="w", padx=25, pady=(15,5))
+    tk.Label(parent, text="ð©âð« Plantilla Docente - Primaria", bg=FONDO, font=FUENTE_TITULO, fg=AZUL).pack(anchor="w", padx=25, pady=(15,5))
     form=tk.Frame(parent, bg=BLANCO, padx=15, pady=12, highlightbackground=BORDE_ROSA, highlightthickness=1); form.pack(fill="x", padx=25, pady=8)
     tk.Label(form, text="ð¤ Nombre:", bg=BLANCO, font=FUENTE_LABEL, fg=AZUL).grid(row=0, column=0)
     entry_doc=tk.Entry(form, font=FUENTE_NORMAL, bd=1, relief="solid", width=22); entry_doc.grid(row=0, column=1, padx=10, ipady=5)
@@ -286,17 +286,17 @@ def crear_vista_gestion_docentes(parent):
         cur.execute("INSERT INTO docentes (nombre, grado) VALUES (%s,%s) ON DUPLICATE KEY UPDATE grado=VALUES(grado)", (nombre, grado)); con.commit()
         docente_grado_map[nombre]=grado
         if nombre not in lista_docentes_global: lista_docentes_global.append(nombre)
-        entry_doc.delete(0, tk.END); refrescar(); dialogo_acoplado("â Agregado a XAMPP", f"{nombre} a {grado}Â°")
+        entry_doc.delete(0, tk.END); refrescar(); dialogo_acoplado("â Agregado", f"{nombre} a {grado}Â°")
     def quitar():
         sel=tabla.selection()
         if not sel: return
         vals=tabla.item(sel[0])["values"]; doc=vals[1]
         cur.execute("DELETE FROM docentes WHERE nombre=%s", (doc,)); con.commit()
         if doc in lista_docentes_global: lista_docentes_global.remove(doc)
-        docente_grado_map.pop(doc, None); refrescar(); dialogo_acoplado("ðï¸ Eliminado de XAMPP", f"{doc} eliminado")
+        docente_grado_map.pop(doc, None); refrescar(); dialogo_acoplado("ðï¸ Eliminado", f"{doc} eliminado")
     btns=tk.Frame(parent, bg=FONDO, height=60); btns.pack(side="bottom", fill="x", padx=25, pady=10)
-    tk.Button(btns, text="â Agregar a XAMPP", bg=VERDE, fg=BLANCO, bd=0, font=FUENTE_BOTON, pady=10, padx=14, command=agregar).pack(side="left", padx=4)
-    tk.Button(btns, text="ðï¸ Quitar de XAMPP", bg=ROJO, fg=BLANCO, bd=0, font=FUENTE_BOTON, pady=10, padx=14, command=quitar).pack(side="left", padx=4)
+    tk.Button(btns, text="â Agregar", bg=VERDE, fg=BLANCO, bd=0, font=FUENTE_BOTON, pady=10, padx=14, command=agregar).pack(side="left", padx=4)
+    tk.Button(btns, text="ðï¸ Quitar", bg=ROJO, fg=BLANCO, bd=0, font=FUENTE_BOTON, pady=10, padx=14, command=quitar).pack(side="left", padx=4)
     refrescar()
 
 def crear_tarjeta_con_diseno(parent_grid, grado, indice, comando):
@@ -369,5 +369,5 @@ def login():
     if usuario_real.get()=="director": mostrar_director()
     else: mostrar_docente()
 
-tk.Button(caja, text="ð Ingresar Primaria (XAMPP - proyecto1)", bg=ROSA, fg=BLANCO, bd=0, font=("Arial",14,"bold"), pady=12, command=login).pack(fill="x", pady=(12,5))
+tk.Button(caja, text="ð Ingresar Primaria", bg=ROSA, fg=BLANCO, bd=0, font=("Arial",14,"bold"), pady=12, command=login).pack(fill="x", pady=(12,5))
 root.mainloop()
