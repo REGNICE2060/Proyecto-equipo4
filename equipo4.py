@@ -50,6 +50,9 @@ def inicializar():
     con.commit()
 inicializar()
 
+#MIGUEL SALVADOR 
+from PIL import Image, ImageTk
+
 def get_docentes():
     cur.execute("SELECT nombre, grado FROM docentes"); return dict(cur.fetchall())
 def get_directores():
