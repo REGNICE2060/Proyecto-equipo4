@@ -1,3 +1,9 @@
+'''
+1.- No esta agregado aqui el script de la base de datos para yo poderlo copiar y pegar en xampp y crear la base de datos, 
+para poder continuar con la revisión y hacer pruebas.
+
+'''
+
 import tkinter as tk
 from tkinter import ttk, messagebox
 from datetime import date
