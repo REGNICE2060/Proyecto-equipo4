@@ -2,6 +2,11 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 from datetime import date
 import mysql.connector # type: ignore
+import os
+import fitz
+#Uriel hizo este comentario desde la cuenta de Regina 
+#URIEL VAZQUEZ 
+from PIL import Image, ImageTk
 
 # ===== CONEXION XAMPP =====
 con = mysql.connector.connect(
