@@ -26,6 +26,21 @@ cur.execute("CREATE TABLE IF NOT EXISTS incidencias (id INT AUTO_INCREMENT PRIMA
 cur.execute("CREATE TABLE IF NOT EXISTS pendientes (id INT AUTO_INCREMENT PRIMARY KEY, texto VARCHAR(255))")
 con.commit()
 
+#VALENTINA REYES GUTIERREZ 
+import openpyxl
+
+def carga_masiva(nombre_excel):
+    wb = openpyxl.load_workbook(nombre_excel)
+    ws = wb.active
+
+    encabezados = [celda.value for celda in ws[1]]
+
+    for fila in ws.iter_rows(min_row=2, values_only=True):
+        registro = dict(zip(encabezados, fila))
+        print(registro)
+
+carga_masiva("datos.xlsx")
+
 # Datos iniciales
 def inicializar():
     cur.execute("SELECT COUNT(*) FROM docentes")
